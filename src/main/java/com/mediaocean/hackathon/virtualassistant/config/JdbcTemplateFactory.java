@@ -3,12 +3,12 @@ package com.mediaocean.hackathon.virtualassistant.config;
 import com.mediaocean.hackathon.virtualassistant.enums.JdbcTemplateEnum;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.stereotype.Component;
 
 import lombok.NonNull;
 
-@Configuration
+@Component
 public class JdbcTemplateFactory {
 
     private final JdbcTemplate integrationJdbcTemplate;
