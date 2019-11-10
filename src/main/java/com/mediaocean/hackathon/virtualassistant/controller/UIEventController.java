@@ -20,8 +20,8 @@ public class UIEventController {
     @Value("message.destination.prefix")
     private String messageDestinationPrefix;
 
-    @MessageMapping("/handleEvent")
-    @SendTo("#{messageDestinationPrefix}/eventHandler")
+    @MessageMapping("/chat")
+    @SendTo("/topic/messages")
     public EventResponse eventHandler(EventRequest eventRequest) {
         EventResponse response = new EventResponse();
         ObjectNode objectNode = JsonNodeFactory.instance.objectNode();

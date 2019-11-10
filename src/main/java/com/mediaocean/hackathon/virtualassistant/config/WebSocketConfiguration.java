@@ -23,14 +23,15 @@ public class WebSocketConfiguration implements WebSocketMessageBrokerConfigurer 
     @Override
     public void configureMessageBroker(MessageBrokerRegistry registry) {
         //prefix to senTo annotation e.d /topic/eventHandler
-        registry.enableSimpleBroker(messageDestinationPrefix);
+        registry.enableSimpleBroker("/topic");
         //prefix to message-mapping annotation e.g. /virtual-assistant/handleEvent
-        registry.setApplicationDestinationPrefixes(applicationContext);
+        registry.setApplicationDestinationPrefixes("/app");
     }
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
         //enabling SockJS fallback options so that alternate transports may be used if WebSocket is not available
-        registry.addEndpoint(sockJSFallbackEndPoint).withSockJS();
+        registry.addEndpoint("/chat");
+        registry.addEndpoint("/chat").setAllowedOrigins("*").withSockJS();
     }
 }
